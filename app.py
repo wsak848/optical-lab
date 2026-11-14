@@ -4,6 +4,7 @@ import streamlit as st
 
 from core.optical_calculations import SPEED_OF_LIGHT_M_S, wavelength_to_frequency
 from core.experiment_ui import render_experiment, render_summary
+from core.refractive_index_ui import render_lab2
 
 
 st.set_page_config(
@@ -63,6 +64,15 @@ st.title("Optical Communication Laboratory")
 st.markdown("**ผู้สอน:** Sakda Wongadyarin", unsafe_allow_html=False)
 st.markdown('<p class="instructor">ห้องทดลองการสื่อสารทางแสง</p>', unsafe_allow_html=True)
 st.divider()
+
+selected_lab = st.selectbox(
+    "เลือกบททดลอง",
+    ["Lab 1: Frequency & Wavelength", "Lab 2: Refractive Index & Speed of Light"],
+    key="selected_lab",
+)
+if selected_lab == "Lab 2: Refractive Index & Speed of Light":
+    render_lab2()
+    st.stop()
 
 st.markdown("### Lab 1 · ความถี่และความยาวคลื่นของแสง")
 st.write("สำรวจความสัมพันธ์ระหว่างความยาวคลื่นกับความถี่ของแสงในระบบสื่อสารใยแก้วนำแสง")
