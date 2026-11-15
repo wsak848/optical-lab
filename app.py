@@ -5,6 +5,7 @@ import streamlit as st
 from core.optical_calculations import SPEED_OF_LIGHT_M_S, wavelength_to_frequency
 from core.experiment_ui import render_experiment, render_summary
 from core.refractive_index_ui import render_lab2
+from core.optical_power_ui import render_lab3
 
 
 st.set_page_config(
@@ -67,9 +68,13 @@ st.divider()
 
 selected_lab = st.selectbox(
     "เลือกบททดลอง",
-    ["Lab 1: Frequency & Wavelength", "Lab 2: Refractive Index & Speed of Light"],
+    ["Lab 1: Frequency & Wavelength", "Lab 2: Refractive Index & Speed of Light",
+     "Lab 3: Optical Power & Fiber Attenuation"],
     key="selected_lab",
 )
+if selected_lab == "Lab 3: Optical Power & Fiber Attenuation":
+    render_lab3()
+    st.stop()
 if selected_lab == "Lab 2: Refractive Index & Speed of Light":
     render_lab2()
     st.stop()
